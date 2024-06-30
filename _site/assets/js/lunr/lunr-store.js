@@ -6,7 +6,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Welcome to Letz Quiz!",
-        "excerpt":"Welcome Hello world, this is my first Jekyll blog post. I hope you like it! Fun with Flags Question: How many countries in the world have square flags? Answer: Switzerland and Vatican City Question: There are only 3 countries in the world that have a dragon in their flag. Name...","categories": [],
+        "excerpt":"Welcome   Hello world, this is my first blog post.   I hope you like it!  ","categories": [],
         "tags": [],
         "url": "/Lets-Quiz/",
         "teaser": null
