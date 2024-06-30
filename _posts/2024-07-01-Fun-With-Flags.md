@@ -1,5 +1,6 @@
 ---
 title:  "Fun With Flags"
+date: 2024-07-01
 categories:
   - Questions
 tags:
