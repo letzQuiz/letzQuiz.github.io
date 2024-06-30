@@ -1,6 +1,9 @@
 ---
-layout: single
 title:  "Fun With Flags"
+categories:
+  - Questions
+tags:
+  - fun-with-flags
 ---
 # Erik Pillon presents: Fun with Flags
 
