@@ -39,9 +39,16 @@ GEM
       net-http
     faraday-retry (2.2.1)
       faraday (~> 2.0)
-    ffi (1.17.0)
+    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-aarch64-linux-musl)
+    ffi (1.17.0-arm-linux-gnu)
+    ffi (1.17.0-arm-linux-musl)
     ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86-linux-gnu)
+    ffi (1.17.0-x86-linux-musl)
     ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.17.0-x86_64-linux-musl)
     forwardable-extended (2.6.0)
     gemoji (4.1.0)
     github-pages (231)
@@ -218,7 +225,6 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.3.6)
-    mini_portile2 (2.8.7)
     minima (2.5.1)
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
@@ -234,12 +240,17 @@ GEM
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
-    nokogiri (1.16.6)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.16.6-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.6-arm-linux)
       racc (~> 1.4)
     nokogiri (1.16.6-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.16.6-x86-linux)
+      racc (~> 1.4)
     nokogiri (1.16.6-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     octokit (4.25.1)
       faraday (>= 1, < 3)
@@ -277,16 +288,23 @@ GEM
     webrick (1.8.1)
 
 PLATFORMS
-  aarch64-mingw-ucrt
+  aarch64-linux
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm-linux
+  arm-linux-gnu
+  arm-linux-musl
   arm64-darwin
-  ruby
-  x86-cygwin
-  x86-mingw-ucrt
-  x86_64-cygwin
+  x86-linux
+  x86-linux-gnu
+  x86-linux-musl
   x86_64-darwin
+  x86_64-linux
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
-  faraday-retry (~> 2.2)
+  faraday-retry (~> 2.0)
   github-pages
   jekyll
   minimal-mistakes-jekyll
