@@ -10,7 +10,7 @@ source "https://rubygems.org"
 # Happy Jekylling!
 
 gem "faraday-retry", "~> 2.0"
-# gem "github-pages", group: :jekyll_plugins
+gem "github-pages", group: :jekyll_plugins
 
 # To upgrade, run `bundle update`.
 
