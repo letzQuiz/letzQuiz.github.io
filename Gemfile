@@ -9,6 +9,7 @@ source "https://rubygems.org"
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
 
+gem "faraday-retry"
 gem "github-pages", group: :jekyll_plugins
 
 # To upgrade, run `bundle update`.
