@@ -19,4 +19,8 @@ layout: archive
   {% endfor %}
 </div>
 
+{% if page.use_math %}
+  {% include mathjax-custom.html %}
+{% endif %}
+
 {% include paginator.html %}

@@ -116,7 +116,7 @@
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a
-                href="https://mmistakes.github.io/minimal-mistakes/about/"
+                href="/about/"
                 
                 
               >About</a>
@@ -125,19 +125,19 @@
                 href="/year-archive/"
                 
                 
-              >Sample Posts</a>
+              >Year Archive</a>
             </li><li class="masthead__menu-item">
               <a
-                href="/collection-archive/"
+                href="/tag-archive/"
                 
                 
-              >Sample Collections</a>
+              >Tag Archive</a>
             </li><li class="masthead__menu-item">
               <a
-                href="/sitemap/"
+                href="/get-in-touch/"
                 
                 
-              >Sitemap</a>
+              >Get in Touch</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -282,7 +282,19 @@
     
       <h1 id="page-title" class="page__title"></h1>
     
-    
+    Hei, thanks for checking out my website!
+
+Here you'll find a fairly accurate collection of all the questions I developed during my experience as quizmaster.
+<br />
+While I strived to provide an engaging experience by means of unique and fun questions, a part of the material may have been inspired by various sources. 
+If you believe a specific question infringes on your intellectual property, please contact me, and I will address the issue promptly.
+
+Enjoy your time here!<br />
+<br />
+
+Your Quizmaster,<br />
+
+$e \pi$
 
 <h3 class="archive__subtitle">Recent posts</h3>
 
@@ -374,6 +386,33 @@
 
   
 </div>
+
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+
+
+  MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+    alert("Math Processing Error: "+message[1]);
+    });
+  MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+    alert("Math Processing Error: "+message[1]);
+    });
+</script>
+
+
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 
 
 
