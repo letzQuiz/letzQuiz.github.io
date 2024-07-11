@@ -10,4 +10,10 @@ var store = [{
         "tags": ["welcome"],
         "url": "/posts/letz-quiz/",
         "teaser": null
+      },{
+        "title": "The Vengeance of the Quizmaster",
+        "excerpt":"General Knowledge Question: July 6th, 1885 is the anniversary of the first injection of the Rabies vaccine. Which famous scientist was responsible for this invention? Answer: Louis Pasteur Question: During the celebrations of the last national day, Grand Duke Henry surprisingly announced that he started the abdication process of Luxembourg....","categories": ["Questions"],
+        "tags": [],
+        "url": "/questions/the-vengeance-of-the-quizmaster/",
+        "teaser": null
       }]
