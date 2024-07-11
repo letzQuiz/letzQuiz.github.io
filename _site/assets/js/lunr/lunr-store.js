@@ -10,4 +10,10 @@ var store = [{
         "tags": ["welcome"],
         "url": "/posts/letz-quiz/",
         "teaser": null
+      },{
+        "title": "The Vengeance of the Quizmaster",
+        "excerpt":" ","categories": ["Questions"],
+        "tags": [],
+        "url": "/questions/the-vengeance-of-the-quizmaster/",
+        "teaser": null
       }]
