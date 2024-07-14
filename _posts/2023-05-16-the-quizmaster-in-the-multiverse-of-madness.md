@@ -1,6 +1,6 @@
 ---
 layout: normal-quiz
-title:  "Quizmaster across the Multiverse"
+title:  "Quizmaster in the Multiverse of Madness"
 date: "2023-05-16"
 categories:
   - Questions
