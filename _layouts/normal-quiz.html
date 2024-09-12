@@ -2,6 +2,19 @@
 layout: archive
 location: "Le Croque Bedaine"
 ---
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const answers = document.querySelectorAll('.answer');
+
+  answers.forEach(answer => {
+    answer.addEventListener('click', function() {
+      const actualAnswer = this.getAttribute('data-answer');
+      this.textContent = actualAnswer;  // Replace "Click to reveal" with the correct answer
+      this.style.cursor = 'default';  // Optional: change cursor to indicate it's revealed
+    });
+  });
+});
+</script>
 
 <b>Disclaimer</b>: The following is a fairly detailed extract of the questions 
 I developed for the PubQuiz at {{ page.location }} on {{ page.date | date: "%B %d, %Y" }}. 
@@ -47,9 +60,9 @@ I usually provide plenty of hints and suggestions during any pubquiz session.
 <h2>General Knowledge</h2>
 <ul>
   {% for entry in general_knowledge %}
-    <li>
-      <strong>Question:</strong> {{ entry.question }}<br>
-      <strong>Answer:</strong> {{ entry.answer }}
+    <li class="faq-item">
+      <strong>Question</strong>: {{ entry.question }}  <br>
+      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
     </li>
   {% endfor %}
 </ul>
@@ -57,9 +70,9 @@ I usually provide plenty of hints and suggestions during any pubquiz session.
 <h2>Books, TV Series and Boardgames </h2>
 <ul>
   {% for entry in books_games %}
-    <li>
-      <strong>Question:</strong> {{ entry.question }}<br>
-      <strong>Answer:</strong> {{ entry.answer }}
+    <li class="faq-item">
+      <strong>Question</strong>: {{ entry.question }}  <br>
+      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
     </li>
   {% endfor %}
 </ul>
@@ -67,9 +80,9 @@ I usually provide plenty of hints and suggestions during any pubquiz session.
 <h2>Sport</h2>
 <ul>
   {% for entry in sport %}
-    <li>
-      <strong>Question:</strong> {{ entry.question }}<br>
-      <strong>Answer:</strong> {{ entry.answer }}
+    <li class="faq-item">
+      <strong>Question</strong>: {{ entry.question }}  <br>
+      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
     </li>
   {% endfor %}
 </ul>
@@ -77,9 +90,9 @@ I usually provide plenty of hints and suggestions during any pubquiz session.
 <h2>Miscellaneous</h2>
 <ul>
   {% for entry in miscellaneous %}
-    <li>
-      <strong>Question:</strong> {{ entry.question }}<br>
-      <strong>Answer:</strong> {{ entry.answer }}
+    <li class="faq-item">
+      <strong>Question</strong>: {{ entry.question }}  <br>
+      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
     </li>
   {% endfor %}
 </ul>
