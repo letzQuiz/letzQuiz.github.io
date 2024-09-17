@@ -34,4 +34,10 @@ var store = [{
         "tags": [],
         "url": "/questions/the-vengeance-of-the-quizmaster/",
         "teaser": null
+      },{
+        "title": "The Bad, The Good, and the Quizmaster",
+        "excerpt":" ","categories": ["Questions"],
+        "tags": [],
+        "url": "/questions/the-bad-the-good-and-the-quizmaster/",
+        "teaser": null
       }]
