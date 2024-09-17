@@ -14,4 +14,4 @@ I am always eager to discuss and share my passion while making science accessibl
 If you share this passion too, or have a project that aligns with these interests, I’d love to connect and explore potential synergies.
 
 So, whether you're here to propose a new quiz idea, discuss science communication, or simply share a new interest or opportunity, I'd love to hear from you. 
-Fill out the form below, or drop me an email at [this address](mailto:pubquiz.lux@gmail.com), and let’s start a conversation!
+Fill out the form below, or drop me an email at [this address](mailto:quizmaster.lux@gmail.com), and let’s start a conversation!
