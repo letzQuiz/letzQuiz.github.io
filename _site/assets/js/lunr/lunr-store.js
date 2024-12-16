@@ -40,4 +40,10 @@ var store = [{
         "tags": [],
         "url": "/questions/the-bad-the-good-and-the-quizmaster/",
         "teaser": null
+      },{
+        "title": "Your Friendly Neighbourhood Quizmaster",
+        "excerpt":" ","categories": ["Questions"],
+        "tags": [],
+        "url": "/questions/your-friendly-neighbourhood-quizmaster/",
+        "teaser": null
       }]
