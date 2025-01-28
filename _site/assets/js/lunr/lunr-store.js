@@ -44,6 +44,12 @@ var store = [{
         "title": "Your Friendly Neighbourhood Quizmaster",
         "excerpt":" ","categories": ["Questions"],
         "tags": [],
-        "url": "/questions/your-friendly-neighbourhood-quizmaster/",
+        "url": "/questions/your-friendly-neighbourhood-quizmaster-copy/",
+        "teaser": null
+      },{
+        "title": "Quizmaster Born Again",
+        "excerpt":"Special Round: Guess the movies with the emojis The highlight of the evening was a special round that challenged participants to guess the titles of popular movies using only a series of emoji clues. I’m sharing at the following link the file I used for the evening from the round,...","categories": ["Questions"],
+        "tags": [],
+        "url": "/questions/quizmaster-born-again/",
         "teaser": null
       }]
