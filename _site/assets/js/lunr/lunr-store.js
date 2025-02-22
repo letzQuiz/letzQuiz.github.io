@@ -52,4 +52,10 @@ var store = [{
         "tags": [],
         "url": "/questions/quizmaster-born-again/",
         "teaser": null
+      },{
+        "title": "Brave New Quizmaster",
+        "excerpt":"Special Round: Guess the currency name The highlight of the evening was a special round that challenged participants to guess the name of some popular currencies using only their symbols. I’m sharing at the following link the file I used for the evening from the round, so you can download...","categories": ["Questions"],
+        "tags": [],
+        "url": "/questions/brave-new-quizmaster/",
+        "teaser": null
       }]
