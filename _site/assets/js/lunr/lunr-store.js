@@ -58,4 +58,16 @@ var store = [{
         "tags": [],
         "url": "/questions/brave-new-quizmaster/",
         "teaser": null
+      },{
+        "title": "Quizmaster Dommsday",
+        "excerpt":" ","categories": ["Questions"],
+        "tags": [],
+        "url": "/questions/quizmaster-doomsday/",
+        "teaser": null
+      },{
+        "title": "Brand New Quizmaster",
+        "excerpt":" ","categories": ["Questions"],
+        "tags": [],
+        "url": "/questions/brand-new-quizmaster/",
+        "teaser": null
       }]
