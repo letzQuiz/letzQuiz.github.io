@@ -82,4 +82,10 @@ var store = [{
         "tags": [],
         "url": "/questions/no-country-for-old-quizmaster/",
         "teaser": null
+      },{
+        "title": "Quizmasters in Quantumania",
+        "excerpt":" ","categories": ["Questions"],
+        "tags": [],
+        "url": "/questions/quizmasters-in-quantumania/",
+        "teaser": null
       }]
