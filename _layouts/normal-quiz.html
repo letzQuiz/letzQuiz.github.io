@@ -30,6 +30,7 @@ layout: single
 
 {% include quiz-toolbar.html %}
 
+{%- assign ad_shown = false -%}
 {% for section in site.data.quiz_sections %}
   {%- assign section_entries = quiz_entries | where: "category", section.id -%}
   {%- if section_entries.size > 0 %}
@@ -42,20 +43,10 @@ layout: single
   </ol>
 </section>
 
-    {% unless forloop.last %}
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7475843431276819"
-    crossorigin="anonymous"></script>
-<!-- Normal Quiz Ad Unit -->
-<ins class="adsbygoogle"
-    style="display:block"
-    data-ad-client="ca-pub-7475843431276819"
-    data-ad-slot="8002850777"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    {% endunless %}
+    {%- unless ad_shown %}
+{% include ad-slot.html slot="8002850777" %}
+      {%- assign ad_shown = true -%}
+    {% endunless -%}
   {%- endif -%}
 {% endfor %}
 
