@@ -37,6 +37,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check quiz data
+        # Fails on broken question files, unknown categories, orphan dates,
+        # duplicate post URLs and incomplete events (see the script header)
+        run: |
+          python -m pip install --quiet pyyaml
+          python scripts/check_data.py
       - name: Setup Ruby
         uses: ruby/setup-ruby@086ffb1a2090c870a3f881cc91ea83aa4243d408 # v1.195.0
         with:
