@@ -14,10 +14,24 @@ var store = [
       {%- else -%}
         {%- assign teaser = site.teaser -%}
       {%- endif -%}
+      {%- comment -%} Quiz questions are injected by the layout, not the post body, so add them here (questions only, never answers). {%- endcomment -%}
+      {%- assign quiz_day = doc.questions_date -%}
+      {%- if doc.layout == "normal-quiz" -%}{%- assign quiz_day = doc.date | date: "%Y-%m-%d" -%}{%- endif -%}
+      {%- assign quiz_text = "" -%}
+      {%- if quiz_day -%}
+        {%- for file in site.data -%}
+          {%- if file[0] contains "questions" -%}
+            {%- assign day_questions = file[1] | where: "date", quiz_day -%}
+            {%- for q in day_questions -%}{%- assign quiz_text = quiz_text | append: " " | append: q.question -%}{%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
       {
         "title": {{ doc.title | jsonify }},
         "excerpt":
-          {%- if site.search_full_content == true -%}
+          {%- if quiz_text != "" -%}
+            {{ doc.excerpt | strip_html | append: quiz_text | strip_newlines | jsonify }},
+          {%- elsif site.search_full_content == true -%}
             {{ doc.content | newline_to_br |
               replace:"<br />", " " |
               replace:"</p>", " " |
