@@ -45,7 +45,7 @@
     "date": "2026-01-24"
   },
   {
-    "question": "Grega Abel recently became the new CEO of the famous investment firm Berkshire Hathaway succeeding who?",
+    "question": "Greg Abel recently became the new CEO of the famous investment firm Berkshire Hathaway succeeding who?",
     "answer": "The Oracle of Omaha, Warren Buffet",
     "tags": [
       "general knowledge"
@@ -225,7 +225,8 @@
     "date": "2026-01-24"
   },
   {
-    "question": "Top 5 grossing movies ever: Avatar, Avengers Endgame, Avatar the way of Water, Titanic, Ne Xha 2",
+    "question": "Name the top 5 grossing movies ever.",
+    "answer": "Avatar, Avengers Endgame, Avatar the way of Water, Titanic, Ne Zha 2",
     "tags": [
       "movies"
     ],

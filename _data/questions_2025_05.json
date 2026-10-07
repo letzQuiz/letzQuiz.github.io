@@ -144,7 +144,7 @@
     "date": "2025-05-23"
   },
   {
-    "question": "Afrikaans, one of the official languages of South Africa, is a dialect of which European languge?",
+    "question": "Afrikaans, one of the official languages of South Africa, is a dialect of which European language?",
     "answer": "Dutch",
     "tags": [
       "general knowledge"
@@ -324,7 +324,7 @@
     "date": "2025-05-23"
   },
   {
-    "question": "Which famous Disney movie is inspired by the Shakepsere's Hamlet?",
+    "question": "Which famous Disney movie is inspired by the Shakespeare's Hamlet?",
     "answer": "The Lion King",
     "tags": [
       "movies"
