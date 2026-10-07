@@ -26,7 +26,7 @@ url                      : "https://letzquiz.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "letzquiz/letzquiz.github.io"
 teaser                   : "/assets/images/posters/default.webp" # fallback teaser for quizzes without a poster
-logo                     : "/assets/images/logo.jpeg"
+logo                     : "/assets/images/logo-256.webp" # 256 px export of logo.jpeg
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 200

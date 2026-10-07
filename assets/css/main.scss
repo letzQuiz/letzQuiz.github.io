@@ -219,7 +219,9 @@ a {
 }
 
 .site-logo img {
-  max-height: 2.5rem;
+  width: auto;
+  height: 2.5rem;
+  max-height: none;
   border-radius: 50%;
 }
 
