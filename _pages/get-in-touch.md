@@ -1,7 +1,7 @@
 ---
 title: "Get in Touch"
 permalink: /get-in-touch/
-layout: posts
+layout: single
 author_profile: true
 ---
 
