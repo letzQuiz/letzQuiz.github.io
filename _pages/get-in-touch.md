@@ -9,7 +9,7 @@ Hei there! Yes, you! Whether you're interested in collaborating on a pub quiz, e
 
 I am constantly trying to expand the pubquiz topics and games with unique and original content and I'm always looking for new  ways to challenge and entertain. If you have a collaboration idea or a unique twist you'd like to propose, don’t hesitate to reach out. 
 
-Beyond my love for quizzes and trivia, I have a keen interest in a range of other fields. Science communication, in particular, holds a special place in my hearts. 
+Beyond my love for quizzes and trivia, I have a keen interest in a range of other fields. Science communication, in particular, holds a special place in my heart. 
 I am always eager to discuss and share my passion while making science accessible and exciting for everyone, trying to close the gap between complex concepts and everyday understanding. 
 If you share this passion too, or have a project that aligns with these interests, I’d love to connect and explore potential synergies.
 

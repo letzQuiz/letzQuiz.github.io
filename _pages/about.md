@@ -10,7 +10,7 @@ toc: true
 
 Hello, I'm Erik, your friendly neighbourhood Quizmaster! 
 
-I've been organizing pubquizzes since March 2022 almost on a monthly basis and what has originally started as an alternative birthday party idea, it has now grown into a thriving business. I soon teamed up with the (Luxdoc association)[https://luxdoc.github.io] and we together keep the pubquiz up and running on a regulare basis.
+I've been organizing pubquizzes since March 2022 almost on a monthly basis and what started as an alternative birthday party has grown into a thriving monthly event. I soon teamed up with the [Luxdoc association](https://luxdoc.github.io) and we together keep the pubquiz up and running on a regular basis.
 
 In this website you'll find, among others, a fairly detailed collection of all the questions I developed during my experience as quizmaster.
 
