@@ -5,5 +5,825 @@ search: false
 
 @charset "utf-8";
 
+/* ==========================================================================
+   Brand tokens (sampled from logo.jpeg)
+   Declared before the theme imports so Minimal Mistakes' !default
+   variables pick them up. Contrast (WCAG): ink on cream 14.7:1,
+   amber-dark on cream 4.8:1, ink on amber 5.7:1, wheat on ink 7.7:1.
+   Amber on cream is only 2.6:1, so amber is used for fills, never text.
+   ========================================================================== */
+
+$ink: #1f282a;        // masthead, footer, headings, body text
+$cream: #fffdee;      // page background
+$wheat: #c5b89e;      // borders, card outlines, muted text on dark
+$amber: #e58a12;      // buttons, badges, highlights (ink text on top)
+$amber-dark: #a65f00; // links on cream
+$surface: #fff;       // cards
+$muted: #6b6657;      // secondary text on cream (5.6:1)
+$danger: #b3261e;     // cancelled events (6.2:1 on white)
+
+$display-font: "Alfa Slab One", Georgia, serif;
+
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 1rem;
+$space-4: 1.5rem;
+$space-5: 2.5rem;
+$radius: 8px;
+$shadow: 0 1px 2px rgba($ink, 0.08), 0 4px 12px rgba($ink, 0.06);
+
+/* theme variables */
+$background-color: $cream;
+$text-color: $ink;
+$muted-text-color: $muted;
+$border-color: $wheat;
+$primary-color: $amber;
+$info-color: $amber;
+$link-color: $amber-dark;
+$link-color-hover: $ink;
+$link-color-visited: $amber-dark;
+$masthead-link-color: $cream;
+$masthead-link-color-hover: $amber;
+$footer-background-color: $ink;
+$focus-color: $amber-dark;
+$yiq-contrasted-dark-default: $ink;
+$yiq-contrasted-threshold: 140;
+$border-radius: $radius;
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+/* ==========================================================================
+   Let'z Quiz! custom styles (keep theme files untouched)
+   ========================================================================== */
+
+/* Display font, self-hosted (SIL OFL, see /assets/fonts/OFL.txt) */
+@font-face {
+  font-family: "Alfa Slab One";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/alfa-slab-one-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Alfa Slab One";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/alfa-slab-one-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@mixin display-type {
+  font-family: $display-font;
+  font-weight: 400; // the face is heavy already; avoid faux bold
+  letter-spacing: 0.01em;
+  color: $ink;
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin: 0;
+  padding: 0.6em 1.2em;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color 0.15s ease-out, color 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+@mixin button-primary {
+  @include button-base;
+  color: $ink;
+  background-color: $amber;
+  border-color: $amber;
+
+  &:visited {
+    color: $ink;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $ink;
+    background-color: mix(#fff, $amber, 20%);
+    border-color: mix(#fff, $amber, 20%);
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  color: $ink;
+  background-color: transparent;
+  border-color: $ink;
+
+  &:visited {
+    color: $ink;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $cream;
+    background-color: $ink;
+  }
+}
+
+/* Base
+   ========================================================================== */
+
+body {
+  background-color: $cream;
+  color: $ink;
+}
+
+h1,
+h2,
+h3,
+.page__title,
+.archive__subtitle {
+  @include display-type;
+}
+
+.page__content h2 {
+  border-bottom: 2px solid $wheat;
+  padding-bottom: $space-1;
+}
+
+a {
+  text-underline-offset: 0.15em;
+}
+
+:focus-visible {
+  outline: 3px solid $amber-dark;
+  outline-offset: 2px;
+}
+
+.btn--primary {
+  @include button-primary;
+}
+
+.btn--inverse {
+  @include button-secondary;
+}
+
+/* Masthead
+   ========================================================================== */
+
+.masthead {
+  background-color: $ink;
+  border-bottom: 4px solid $amber;
+
+  .greedy-nav {
+    background: $ink;
+
+    a {
+      color: $cream;
+
+      &:hover {
+        color: $amber;
+      }
+    }
+
+    .hidden-links {
+      background: $ink;
+      border-color: $wheat;
+
+      &::before {
+        border-color: $wheat transparent;
+      }
+
+      &::after {
+        border-color: $ink transparent;
+      }
+
+      li {
+        border-bottom-color: rgba($wheat, 0.4);
+      }
+
+      a:hover {
+        color: $ink;
+        background: $amber;
+      }
+    }
+  }
+
+  :focus-visible {
+    outline-color: $amber;
+  }
+}
+
+.site-logo img {
+  width: auto;
+  height: 2.5rem;
+  max-height: none;
+  border-radius: 50%;
+}
+
+.site-title {
+  font-family: $display-font;
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+
+/* Sidebar
+   ========================================================================== */
+
+.author__name {
+  @include display-type;
+}
+
+/* Notices (quiz intro uses notice--info) */
+.notice--info {
+  color: $ink;
+  background-color: mix($surface, $amber, 90%);
+  box-shadow: none;
+  border-left: 4px solid $amber;
+}
+
+/* Footer
+   ========================================================================== */
+
+.page__footer {
+  color: $wheat;
+  background-color: $ink;
+  border-top: 4px solid $amber;
+
+  a {
+    color: $cream;
+  }
+
+  .fas,
+  .fab,
+  .far,
+  .fal {
+    color: $wheat;
+  }
+
+  :focus-visible {
+    outline-color: $amber;
+  }
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2 $space-4;
+  margin-bottom: $space-3;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.page__footer-copyright {
+  font-size: 0.75rem;
+}
+
+/* Upcoming events (homepage)
+   ========================================================================== */
+
+.events {
+  margin: $space-5 0;
+}
+
+.events__title {
+  margin-top: 0;
+}
+
+.events__list {
+  display: grid;
+  gap: $space-3;
+  grid-template-columns: repeat(auto-fill, minmax(#{unquote("min(100%, 17rem)")}, 1fr));
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  padding: $space-4;
+  color: $ink;
+  background: $surface;
+  border: 1px solid $wheat;
+  border-radius: $radius;
+  box-shadow: $shadow;
+
+  &[hidden] {
+    display: none;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  &--next {
+    border-top: 6px solid $amber;
+  }
+}
+
+.event-card__date {
+  @include display-type;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.event-card__where {
+  color: $muted;
+}
+
+.event-card__note {
+  font-size: 0.9rem;
+}
+
+.event-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  margin-top: auto;
+  padding-top: $space-2;
+}
+
+.btn--register {
+  @include button-primary;
+}
+
+.btn--calendar {
+  @include button-secondary;
+}
+
+.event-card .badge {
+  align-self: flex-start;
+  padding: 0.2em 0.75em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+
+  &--open {
+    color: $ink;
+    background: mix($surface, $amber, 75%);
+  }
+
+  &--full {
+    color: $cream;
+    background: $ink;
+  }
+
+  &--cancelled {
+    color: $danger;
+    background: $surface;
+    border: 1px solid $danger;
+  }
+}
+
+.events__empty {
+  padding: $space-4;
+  background: $surface;
+  border: 1px dashed $wheat;
+  border-radius: $radius;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+/* Quiz pages
+   ========================================================================== */
+
+.quiz-summary {
+  margin-top: -0.5em;
+  color: $muted;
+  font-weight: 600;
+}
+
+.quiz-intro {
+  font-size: 0.9rem !important;
+}
+
+.quiz-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: $space-3 0;
+
+  .btn[hidden] {
+    display: none;
+  }
+}
+
+.quiz-section {
+  margin-top: $space-5;
+}
+
+.quiz-questions {
+  margin: 0;
+  padding-inline-start: 1.75em;
+
+  > li {
+    margin: 0;
+    padding: $space-3 0;
+    border-bottom: 1px solid rgba($wheat, 0.6);
+
+    &::marker {
+      color: $muted;
+      font-weight: 700;
+    }
+  }
+}
+
+.quiz-questions .quiz-question__text {
+  margin: 0 0 $space-2 !important; // beat .page__content p
+}
+
+.quiz-answer {
+  summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    min-height: 44px;
+    padding: 0 1em;
+    color: $ink;
+    font-size: 0.8rem;
+    font-weight: 700;
+    list-style: none;
+    border: 1px solid $wheat;
+    border-radius: 999px;
+    background: $surface;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      width: 0.45em;
+      height: 0.45em;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(-45deg);
+      transition: transform 0.15s ease-out;
+    }
+
+    &:hover {
+      border-color: $amber;
+      background: mix($surface, $amber, 85%);
+    }
+  }
+
+  &[open] summary::before {
+    transform: rotate(45deg);
+  }
+
+  &[open] .quiz-answer__show,
+  &:not([open]) .quiz-answer__hide {
+    display: none;
+  }
+}
+
+.quiz-questions .quiz-answer__text {
+  margin: $space-2 0 0 !important; // beat .page__content p
+  padding: $space-2 $space-3;
+  font-weight: 600;
+  background: mix($surface, $amber, 88%);
+  border-left: 4px solid $amber;
+  border-radius: 0 $radius $radius 0;
+}
+
+.quiz-pager {
+  float: inline-start; // siblings in .page__inner-wrap are floated
+  clear: both;
+  width: 100%;
+  display: grid;
+  gap: $space-3;
+  grid-template-columns: repeat(auto-fit, minmax(#{unquote("min(100%, 14rem)")}, 1fr));
+  margin: $space-5 0 $space-4;
+}
+
+.quiz-pager__link {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  padding: $space-3;
+  color: $ink;
+  text-decoration: none;
+  background: $surface;
+  border: 1px solid $wheat;
+  border-radius: $radius;
+
+  &:visited {
+    color: $ink;
+  }
+
+  &:hover {
+    color: $ink;
+    border-color: $amber;
+  }
+
+  &--next {
+    text-align: end;
+    grid-column: -2;
+  }
+}
+
+.quiz-pager__label {
+  color: $muted;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.quiz-pager__title {
+  @include display-type;
+}
+
+/* The post footer repeats the date and the single category; drop it on quiz pages */
+.layout--normal-quiz footer.page__meta {
+  display: none;
+}
+
+/* Share buttons follow the brand instead of each network's colour */
+.page__share {
+  .btn--twitter,
+  .btn--facebook,
+  .btn--linkedin {
+    @include button-secondary;
+    min-height: 40px;
+    font-size: 0.8rem;
+    margin-bottom: $space-2;
+  }
+}
+
+.newsletter {
+  margin: $space-5 0;
+}
+
+/* Homepage hero
+   The neon-sign photo sits on the right on wide screens and on top on
+   phones, fading into ink so the title stays readable (cream on ink).
+   ========================================================================== */
+
+$hero-photo: url("../images/PubQuiz_background.jpg");
+$hero-photo-set: image-set(url("../images/PubQuiz_background.webp") type("image/webp"), url("../images/PubQuiz_background.jpg") type("image/jpeg"));
+
+.layout--home .page__hero--overlay {
+  margin-bottom: 0;
+  padding: 15rem 0 $space-5;
+  background-color: $ink;
+  background-image: linear-gradient(180deg, rgba($ink, 0.1) 0%, rgba($ink, 0.55) 45%, $ink 70%), $hero-photo !important;
+  background-image: linear-gradient(180deg, rgba($ink, 0.1) 0%, rgba($ink, 0.55) 45%, $ink 70%), $hero-photo-set !important;
+  background-size: 100% 100%, 100% auto !important;
+  background-position: 0 0, center top !important;
+  background-repeat: no-repeat !important;
+
+  @include breakpoint($medium) {
+    display: flex;
+    align-items: center;
+    min-height: 26rem;
+    padding: $space-5 0;
+    background-image: linear-gradient(90deg, $ink 0%, $ink 40%, rgba($ink, 0.6) 62%, rgba($ink, 0.05) 100%), $hero-photo !important;
+    background-image: linear-gradient(90deg, $ink 0%, $ink 40%, rgba($ink, 0.6) 62%, rgba($ink, 0.05) 100%), $hero-photo-set !important;
+    background-size: 100% 100%, auto 100% !important;
+    background-position: 0 0, right center !important;
+  }
+
+  .wrapper {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .page__title {
+    margin-bottom: $space-3;
+    color: $cream;
+    font-family: $display-font;
+    font-weight: 400;
+    text-shadow: none;
+  }
+
+  .page__lead {
+    max-width: 28rem;
+    margin-bottom: $space-4;
+    color: $cream;
+    font-size: 1.1rem;
+    text-shadow: none;
+  }
+
+  p:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  .btn {
+    text-shadow: none;
+  }
+
+  .btn--primary {
+    color: $ink;
+  }
+
+  .btn--light-outline {
+    @include button-base;
+    color: $cream;
+    border-color: $cream;
+
+    &:hover,
+    &:focus-visible {
+      color: $ink;
+      background-color: $cream;
+    }
+  }
+
+  :focus-visible {
+    outline-color: $amber;
+  }
+}
+
+.layout--home #main {
+  max-width: $max-width;
+}
+
+.home-archive {
+  margin: $space-5 0;
+}
+
+.home-archive__more {
+  margin-top: $space-4;
+}
+
+/* Quiz cards (archive, homepage, related)
+   ========================================================================== */
+
+.entries-grid {
+  display: grid;
+  gap: $space-4;
+  grid-template-columns: repeat(auto-fill, minmax(#{unquote("min(100%, 12rem)")}, 1fr));
+  margin-bottom: $space-4;
+
+  .grid__item {
+    float: none !important;
+    clear: none !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+}
+
+.grid__item .archive__item,
+.page__related .grid__item .archive__item {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: $surface;
+  border: 1px solid $wheat;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  transition: border-color 0.15s ease-out, transform 0.15s ease-out;
+
+  &:hover,
+  &:focus-within {
+    border-color: $amber;
+    transform: translateY(-2px);
+  }
+
+  .archive__item-teaser {
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+    aspect-ratio: 16 / 9;
+    background: $ink;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .archive__item-title {
+    margin: $space-3 $space-3 $space-1;
+    font-family: $display-font;
+    font-weight: 400;
+    font-size: 1.05rem;
+    line-height: 1.25;
+
+    a {
+      color: $ink;
+      text-decoration: none;
+
+      // the whole card is the link target
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+    }
+  }
+
+  .archive__item-excerpt {
+    display: block;
+    margin: 0 $space-3 $space-3;
+    color: $muted;
+    font-size: 0.8rem;
+  }
+
+  // phones: thumbnail beside the text so the archive stays scannable
+  @include breakpoint(max-width $small - 1px) {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    column-gap: $space-3;
+    align-items: center;
+
+    .archive__item-teaser {
+      grid-row: 1 / span 2;
+      align-self: stretch;
+      aspect-ratio: auto;
+    }
+
+    .archive__item-title {
+      margin: $space-3 $space-3 $space-1 0;
+      font-size: 1rem;
+    }
+
+    .archive__item-excerpt {
+      margin: 0 $space-3 $space-3 0;
+    }
+  }
+}
+
+.page__related {
+  .page__related-title {
+    @include display-type;
+  }
+
+  .grid__wrapper {
+    @extend .entries-grid;
+  }
+}
+
+.taxonomy__index a {
+  color: $ink;
+}
+
+.ad-slot {
+  margin: $space-5 0;
+}
+
+/* Print: a quiz page becomes a clean question-and-answer sheet */
+@media print {
+  .masthead,
+  .sidebar,
+  .page__footer,
+  .page__share,
+  .page__related,
+  .page__meta,
+  .quiz-pager,
+  .quiz-toolbar,
+  .newsletter,
+  .ml-embedded,
+  .adsbygoogle,
+  .skip-links,
+  .events,
+  .quiz-answer summary {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .quiz-questions > li {
+    break-inside: avoid;
+    padding: 0.4em 0;
+  }
+
+  .quiz-answer__text {
+    margin-top: 0.2em;
+    padding: 0;
+    background: none;
+    border: 0;
+
+    &::before {
+      content: "Answer: ";
+    }
+  }
+}
+
+@media print {
+  .quiz-answer::details-content {
+    content-visibility: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

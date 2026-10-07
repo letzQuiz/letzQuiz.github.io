@@ -10,7 +10,7 @@ toc: true
 
 Hello, I'm Erik, your friendly neighbourhood Quizmaster! 
 
-I've been organizing pubquizzes since March 2022 almost on a monthly basis and what has originally started as an alternative birthday party idea, it has now grown into a thriving business. I soon teamed up with the (Luxdoc association)[https://luxdoc.github.io] and we together keep the pubquiz up and running on a regulare basis.
+I've been organizing pubquizzes since March 2022 almost on a monthly basis and what started as an alternative birthday party has grown into a thriving monthly event. I soon teamed up with the [Luxdoc association](https://luxdoc.github.io) and we together keep the pubquiz up and running on a regular basis.
 
 In this website you'll find, among others, a fairly detailed collection of all the questions I developed during my experience as quizmaster.
 
@@ -24,3 +24,7 @@ A pub quiz is a great way to test your knowledge, enjoy some friendly competitio
 ## How to Register
 
 With 30+ editions under our belt, our quizzes got quite popular with time, and unfortunately space is limited!  We can only accommodate 8 teams, so early registration is essential.  To register your team of five, please send an email to [quizmaster.lux [ at ] gmail.com](mailto:quizmaster.lux@gmail.com) specifying your team members. Please note: due to space constraints, we only accept team registrations of maximum five people (no penalty in case teams are smaller). Single registrations are unfortunately no longer possible.
+
+## About the questions
+
+I keep things fresh and original, though, like any good quiz, some material is inspired by the world around us. If you believe any content infringes on your intellectual property, please [get in touch](mailto:quizmaster.lux@gmail.com) and I will address it immediately.

@@ -1,0 +1,46 @@
+{% comment %}
+  schema.org Event markup for each upcoming quiz in _data/events.yml.
+  Offsets come from the site timezone (Europe/Luxembourg), so winter dates
+  get +01:00 and summer dates +02:00 automatically.
+{% endcomment %}
+{%- assign today = site.time | date: "%Y-%m-%d" -%}
+{%- for event in site.data.events -%}
+{%- assign event_day = event.date | date: "%Y-%m-%d" -%}
+{%- if event_day >= today -%}
+{%- assign start_text = event_day | append: " " | append: event.start -%}
+{%- assign start_epoch = start_text | date: "%s" | plus: 0 -%}
+{%- assign end_epoch = start_epoch | plus: 10800 -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": {{ "Let'z Quiz! pub quiz" | jsonify }},
+  "description": {{ "Monthly pub quiz in Luxembourg City for teams of up to 5, with a music round and a themed special round." | jsonify }},
+  "startDate": "{{ start_epoch | date: '%Y-%m-%dT%H:%M:%S%:z' }}",
+  "endDate": "{{ end_epoch | date: '%Y-%m-%dT%H:%M:%S%:z' }}",
+  "eventStatus": "https://schema.org/{% if event.status == 'cancelled' %}EventCancelled{% else %}EventScheduled{% endif %}",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": {{ event.venue | jsonify }},
+    "address": {
+      "@type": "PostalAddress",
+      {%- if event.address and event.address != "" %}
+      "streetAddress": {{ event.address | jsonify }},
+      {%- endif %}
+      "addressLocality": {{ event.area | default: "Luxembourg" | append: ", Luxembourg" | jsonify }},
+      "addressCountry": "LU"
+    }
+  },
+  "image": [{{ site.og_image | absolute_url | jsonify }}],
+  "url": {{ "/#next-quiz" | absolute_url | jsonify }},
+  "organizer": {
+    "@type": "Person",
+    "name": {{ site.author.name | jsonify }},
+    "email": {{ site.author.email | jsonify }},
+    "url": {{ "/" | absolute_url | jsonify }}
+  }
+}
+</script>
+{%- endif -%}
+{%- endfor -%}

@@ -1,0 +1,78 @@
+{% comment %}
+  Upcoming quizzes, rendered from _data/events.yml.
+  Past events are skipped at build time and hidden in the browser by the
+  script below, so the page stays correct between daily rebuilds.
+{% endcomment %}
+{% assign today = site.time | date: "%Y-%m-%d" %}
+{% assign shown = 0 %}
+
+<section id="next-quiz" class="events" aria-labelledby="next-quiz-title">
+  <h2 id="next-quiz-title" class="events__title">Next quizzes</h2>
+  <div class="events__list">
+  {% for event in site.data.events %}
+    {% assign event_day = event.date | date: "%Y-%m-%d" %}
+    {% if event_day >= today %}
+      {% assign shown = shown | plus: 1 %}
+      {% assign nice_date = event.date | date: "%A, %-d %B %Y" %}
+      {% capture place %}{{ event.venue }}{% if event.area and event.area != "" %}, {{ event.area }}{% endif %}{% endcapture %}
+
+      {% capture reg_subject %}Registration – Let'z Quiz – {{ nice_date }}{% endcapture %}
+      {% capture reg_body %}Hi Erik,
+
+We'd like to register a team for Let'z Quiz on {{ nice_date }} at {{ event.venue }}.
+
+Team name:
+Team members (max 5):
+1.
+2.
+3.
+4.
+5.
+Contact phone:
+
+Thanks!{% endcapture %}
+      {% assign reg_subject = reg_subject | url_encode | replace: "+", "%20" %}
+      {% assign reg_body = reg_body | url_encode | replace: "+", "%20" | replace: "%0A", "%0D%0A" %}
+
+      <article class="event-card{% if shown == 1 %} event-card--next{% endif %}" data-date="{{ event_day }}">
+        <p class="event-card__date"><time datetime="{{ event_day }}T{{ event.start }}">{{ nice_date }}</time></p>
+        <p class="event-card__where">{{ event.start }} · {{ place }}</p>
+        {% case event.status %}
+          {% when "full" %}<p class="badge badge--full">Fully booked</p>
+          {% when "cancelled" %}<p class="badge badge--cancelled">Cancelled</p>
+          {% else %}<p class="badge badge--open">Registration open</p>
+        {% endcase %}
+        {% if event.note and event.note != "" %}<p class="event-card__note">{{ event.note }}</p>{% endif %}
+        {% unless event.status == "cancelled" %}
+        <div class="event-card__actions">
+          {% unless event.status == "full" %}
+          <a class="btn btn--register" href="mailto:{{ site.author.email }}?subject={{ reg_subject }}&amp;body={{ reg_body }}">Register your team</a>
+          {% endunless %}
+          <a class="btn btn--calendar" href="{{ '/events.ics' | relative_url }}" download>Add to calendar</a>
+        </div>
+        {% endunless %}
+      </article>
+    {% endif %}
+  {% endfor %}
+  </div>
+  <p class="events__empty"{% if shown > 0 %} hidden{% endif %}>Next date coming soon — subscribe below to be the first to know.</p>
+</section>
+
+<script>
+  (function () {
+    var now = new Date();
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var today = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+    var cards = document.querySelectorAll('.event-card[data-date]');
+    var first = null;
+    for (var i = 0; i < cards.length; i++) {
+      var past = cards[i].getAttribute('data-date') < today;
+      cards[i].hidden = past;
+      cards[i].classList.remove('event-card--next');
+      if (!past && !first) { first = cards[i]; }
+    }
+    if (first) { first.classList.add('event-card--next'); }
+    var empty = document.querySelector('.events__empty');
+    if (empty) { empty.hidden = !!first; }
+  })();
+</script>

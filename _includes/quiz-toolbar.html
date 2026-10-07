@@ -1,0 +1,41 @@
+{% comment %}
+  "Reveal all / Hide all" for the <details> answers on a quiz page.
+  The button stays hidden without JavaScript; each answer still works on
+  its own. Answers are also opened for printing and restored afterwards.
+{% endcomment %}
+<div class="quiz-toolbar">
+  <button type="button" class="btn btn--inverse quiz-toggle-all" aria-pressed="false" hidden>Reveal all answers</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var answers = Array.prototype.slice.call(document.querySelectorAll('details.quiz-answer'));
+    var button = document.querySelector('.quiz-toggle-all');
+    if (!answers.length || !button) { return; }
+
+    var allOpen = function () { return answers.every(function (d) { return d.open; }); };
+    var sync = function () {
+      var open = allOpen();
+      button.textContent = open ? 'Hide all answers' : 'Reveal all answers';
+      button.setAttribute('aria-pressed', open ? 'true' : 'false');
+    };
+
+    button.hidden = false;
+    button.addEventListener('click', function () {
+      var open = !allOpen();
+      answers.forEach(function (d) { d.open = open; });
+      sync();
+    });
+    answers.forEach(function (d) { d.addEventListener('toggle', sync); });
+
+    var openBeforePrint = [];
+    window.addEventListener('beforeprint', function () {
+      openBeforePrint = answers.map(function (d) { return d.open; });
+      answers.forEach(function (d) { d.open = true; });
+    });
+    window.addEventListener('afterprint', function () {
+      answers.forEach(function (d, i) { d.open = openBeforePrint[i]; });
+      sync();
+    });
+  });
+</script>

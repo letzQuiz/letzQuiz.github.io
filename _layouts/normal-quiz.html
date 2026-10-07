@@ -1,139 +1,53 @@
 ---
-layout: archive
-location: "Le Croque Bedaine"
+layout: single
 ---
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const answers = document.querySelectorAll('.answer');
+{% comment %}
+  One quiz night: summary line, short intro note, any special-round content
+  from the post body, then the questions grouped by _data/quiz_sections.yml.
+  Questions come from every _data/questions*.json entry whose date matches
+  the post date.
+{% endcomment %}
+{%- assign quiz_day = page.date | date: "%Y-%m-%d" -%}
+{%- assign all_entries = "" | split: "" -%}
+{%- for file in site.data -%}
+  {%- if file[0] contains "questions" -%}
+    {%- assign all_entries = all_entries | concat: file[1] -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign quiz_entries = all_entries | where: "date", quiz_day -%}
 
-  answers.forEach(answer => {
-    answer.addEventListener('click', function() {
-      const actualAnswer = this.getAttribute('data-answer');
-      this.textContent = actualAnswer;  // Replace "Click to reveal" with the correct answer
-      this.style.cursor = 'default';  // Optional: change cursor to indicate it's revealed
-    });
-  });
-});
-</script>
+<p class="quiz-summary">
+  <time datetime="{{ quiz_day }}">{{ page.date | date: "%A, %-d %B %Y" }}</time>
+  {%- if page.location %} <span aria-hidden="true">·</span> {{ page.location }}{% endif %}
+  <span aria-hidden="true">·</span> {{ quiz_entries.size }} questions
+</p>
 
-<b>Disclaimer</b>: The following is a fairly detailed extract of the questions 
-I developed for the PubQuiz at {{ page.location }} on {{ page.date | date: "%B %d, %Y" }}. 
-While being open to everyone, I am that the audience was mostly coming from an academic background 
-(indeed a significant percentage of the audience is undergoing/has undergone a period of doctoral studies), 
-so if you feel that some of the following questions are particularly specific or niche, that is on purpose. 
-<br/>
-Please don't be discouraged by the apparent difficulty of several questions, 
-I usually provide plenty of hints and suggestions during any pubquiz session. 
+<div class="notice--info quiz-intro">
+  <p>The audience is mostly academic, so some questions are niche on purpose; on the night I give plenty of hints. Answers reflect the date of the quiz, so “recently” means recently in {{ page.date | date: "%B %Y" }}.</p>
+</div>
 
 {{ content }}
 
-<div class="ml-embedded" data-form="5JTcdl"></div>
+{% include quiz-toolbar.html %}
 
-{% assign date = page.date | date: "%Y-%m-%d" %}
+{%- assign ad_shown = false -%}
+{% for section in site.data.quiz_sections %}
+  {%- assign section_entries = quiz_entries | where: "category", section.id -%}
+  {%- if section_entries.size > 0 %}
+<section class="quiz-section" aria-labelledby="section-{{ section.id }}">
+  <h2 id="section-{{ section.id }}">{{ section.title }}</h2>
+  <ol class="quiz-questions">
+    {%- for entry in section_entries %}
+    {% include quiz-question.html entry=entry %}
+    {%- endfor %}
+  </ol>
+</section>
 
-
-{% assign files = site.data %}
-{% assign all_entries = "" | split: "" %}
-
-{% for file in site.data %}
-  {% if file[0] contains "questions" %}
-    {% assign entries = file[1] %}
-    {% assign all_entries = all_entries | concat: entries %}
-  {% endif %}
+    {%- unless ad_shown %}
+{% include ad-slot.html slot="8002850777" %}
+      {%- assign ad_shown = true -%}
+    {% endunless -%}
+  {%- endif -%}
 {% endfor %}
 
-{% assign filtered_entries = all_entries | where: "date", date %}
-
-{% assign general_knowledge = filtered_entries | where: "tags", "general knowledge" %}
-{% assign sport = filtered_entries | where: "tags", "sport" %}
-
-{% assign books_games = "" | split: "" %}
-
-{% assign tv_entries = filtered_entries | where: "tags", "TV" %}
-{% assign books_entries = filtered_entries | where: "tags", "books" %}
-{% assign movies_entries = filtered_entries | where: "tags", "movies" %}
-{% assign games_entries = filtered_entries | where: "tags", "games" %}
-
-{% assign books_games = books_games | concat : tv_entries | concat : books_entries | concat : movies_entries | concat : games_entries %}
-
-{% assign miscellaneous = filtered_entries | where_exp: "entry", "entry.tags != 'general knowledge'" | where_exp: "entry", "entry.tags != 'TV'" | where_exp: "entry", "entry.tags != 'books'" | where_exp: "entry", "entry.tags != 'movies'" | where_exp: "entry", "entry.tags != 'games'" | where_exp: "entry", "entry.tags != 'sport'" %}
-
-<h2>General Knowledge</h2>
-<ul>
-  {% for entry in general_knowledge %}
-    <li class="faq-item">
-      <strong>Question</strong>: {{ entry.question }}  <br>
-      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
-    </li>
-  {% endfor %}
-</ul>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7475843431276819"
-    crossorigin="anonymous"></script>
-<!-- Normal Quiz Ad Unit -->
-<ins class="adsbygoogle"
-    style="display:block"
-    data-ad-client="ca-pub-7475843431276819"
-    data-ad-slot="8002850777"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<h2>Books, TV Series and Boardgames </h2>
-<ul>
-  {% for entry in books_games %}
-    <li class="faq-item">
-      <strong>Question</strong>: {{ entry.question }}  <br>
-      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
-    </li>
-  {% endfor %}
-</ul>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7475843431276819"
-     crossorigin="anonymous"></script>
-<!-- Normal Quiz Ad Unit -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7475843431276819"
-     data-ad-slot="8002850777"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<h2>Sport</h2>
-<ul>
-  {% for entry in sport %}
-    <li class="faq-item">
-      <strong>Question</strong>: {{ entry.question }}  <br>
-      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
-    </li>
-  {% endfor %}
-</ul>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7475843431276819"
-     crossorigin="anonymous"></script>
-<!-- Normal Quiz Ad Unit -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7475843431276819"
-     data-ad-slot="8002850777"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<h2>Miscellaneous</h2>
-<ul>
-  {% for entry in miscellaneous %}
-    <li class="faq-item">
-      <strong>Question</strong>: {{ entry.question }}  <br>
-      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
-    </li>
-  {% endfor %}
-</ul>
-
+{% include newsletter.html %}

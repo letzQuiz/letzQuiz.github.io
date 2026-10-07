@@ -1,0 +1,13 @@
+{% comment %}
+  One Google AdSense unit. Usage: {% include ad-slot.html slot="8002850777" %}
+  The AdSense loader script is included once in _includes/head.html.
+{% endcomment %}
+<aside class="ad-slot" aria-label="Advertisement">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="{{ site.adsense_client }}"
+       data-ad-slot="{{ include.slot }}"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</aside>

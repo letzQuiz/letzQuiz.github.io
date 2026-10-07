@@ -1,0 +1,64 @@
+---
+layout: null
+permalink: /events.ics
+sitemap: false
+---
+{%- comment -%}
+  iCalendar feed of upcoming quizzes, generated from _data/events.yml.
+  Each quiz lasts 3 hours. DTSTAMP must be UTC, so the build time is
+  shifted by the site's UTC offset before formatting.
+{%- endcomment -%}
+{%- assign today = site.time | date: "%Y-%m-%d" -%}
+{%- assign tz = site.time | date: "%z" -%}
+{%- assign tz_sign = tz | slice: 0 -%}
+{%- assign tz_h = tz | slice: 1, 2 | plus: 0 -%}
+{%- assign tz_m = tz | slice: 3, 2 | plus: 0 -%}
+{%- assign tz_seconds = tz_h | times: 60 | plus: tz_m | times: 60 -%}
+{%- assign now_epoch = site.time | date: "%s" | plus: 0 -%}
+{%- if tz_sign == "-" -%}{%- assign utc_epoch = now_epoch | plus: tz_seconds -%}{%- else -%}{%- assign utc_epoch = now_epoch | minus: tz_seconds -%}{%- endif -%}
+{%- assign dtstamp = utc_epoch | date: "%Y%m%dT%H%M%SZ" -%}
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Let'z Quiz//Upcoming quizzes//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Let'z Quiz!
+X-WR-TIMEZONE:Europe/Luxembourg
+BEGIN:VTIMEZONE
+TZID:Europe/Luxembourg
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+{% for event in site.data.events -%}
+{%- assign event_day = event.date | date: "%Y-%m-%d" -%}
+{%- if event_day >= today -%}
+{%- assign start_text = event_day | append: " " | append: event.start -%}
+{%- assign start_epoch = start_text | date: "%s" | plus: 0 -%}
+{%- assign end_epoch = start_epoch | plus: 10800 -%}
+{%- capture place -%}{{ event.venue }}{% if event.area and event.area != "" %}, {{ event.area }}{% endif %}, Luxembourg{%- endcapture -%}
+BEGIN:VEVENT
+UID:letzquiz-{{ event_day }}@letzquiz.github.io
+DTSTAMP:{{ dtstamp }}
+DTSTART;TZID=Europe/Luxembourg:{{ start_epoch | date: "%Y%m%dT%H%M%S" }}
+DTEND;TZID=Europe/Luxembourg:{{ end_epoch | date: "%Y%m%dT%H%M%S" }}
+SUMMARY:Let'z Quiz! pub quiz
+LOCATION:{{ place | replace: ",", "\," }}
+DESCRIPTION:Monthly pub quiz for teams of up to 5. Register by email: {{ site.author.email }}
+URL:{{ site.url }}/#next-quiz
+STATUS:{% if event.status == "cancelled" %}CANCELLED{% else %}CONFIRMED{% endif %}
+END:VEVENT
+{% endif -%}
+{%- endfor -%}
+END:VCALENDAR

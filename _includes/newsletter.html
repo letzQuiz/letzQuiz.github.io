@@ -1,0 +1,11 @@
+{% comment %}
+  MailerLite signup form (form ID 5JTcdl). The form brings its own title,
+  so a heading is only added when the caller passes one.
+{% endcomment %}
+<section id="newsletter" class="newsletter"{% if include.heading %} aria-labelledby="newsletter-title"{% else %} aria-label="Newsletter"{% endif %}>
+  {% if include.heading %}
+  <h2 id="newsletter-title">{{ include.heading }}</h2>
+  {% if include.text %}<p>{{ include.text }}</p>{% endif %}
+  {% endif %}
+  <div class="ml-embedded" data-form="5JTcdl"></div>
+</section>
