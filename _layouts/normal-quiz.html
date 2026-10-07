@@ -44,23 +44,12 @@ I usually provide plenty of hints and suggestions during any pubquiz session.
 
 {% assign filtered_entries = all_entries | where: "date", date %}
 
-{% assign general_knowledge = filtered_entries | where: "tags", "general knowledge" %}
-{% assign sport = filtered_entries | where: "tags", "sport" %}
-
-{% assign books_games = "" | split: "" %}
-
-{% assign tv_entries = filtered_entries | where: "tags", "TV" %}
-{% assign books_entries = filtered_entries | where: "tags", "books" %}
-{% assign movies_entries = filtered_entries | where: "tags", "movies" %}
-{% assign games_entries = filtered_entries | where: "tags", "games" %}
-
-{% assign books_games = books_games | concat : tv_entries | concat : books_entries | concat : movies_entries | concat : games_entries %}
-
-{% assign miscellaneous = filtered_entries | where_exp: "entry", "entry.tags != 'general knowledge'" | where_exp: "entry", "entry.tags != 'TV'" | where_exp: "entry", "entry.tags != 'books'" | where_exp: "entry", "entry.tags != 'movies'" | where_exp: "entry", "entry.tags != 'games'" | where_exp: "entry", "entry.tags != 'sport'" %}
-
-<h2>General Knowledge</h2>
+{% for section in site.data.quiz_sections %}
+  {% assign section_entries = filtered_entries | where: "category", section.id %}
+  {% if section_entries.size > 0 %}
+<h2>{{ section.title }}</h2>
 <ul>
-  {% for entry in general_knowledge %}
+  {% for entry in section_entries %}
     <li class="faq-item">
       <strong>Question</strong>: {{ entry.question }}  <br>
       <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
@@ -68,6 +57,7 @@ I usually provide plenty of hints and suggestions during any pubquiz session.
   {% endfor %}
 </ul>
 
+    {% unless forloop.last %}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7475843431276819"
     crossorigin="anonymous"></script>
 <!-- Normal Quiz Ad Unit -->
@@ -80,60 +70,6 @@ I usually provide plenty of hints and suggestions during any pubquiz session.
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
-<h2>Books, TV Series and Boardgames </h2>
-<ul>
-  {% for entry in books_games %}
-    <li class="faq-item">
-      <strong>Question</strong>: {{ entry.question }}  <br>
-      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
-    </li>
-  {% endfor %}
-</ul>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7475843431276819"
-     crossorigin="anonymous"></script>
-<!-- Normal Quiz Ad Unit -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7475843431276819"
-     data-ad-slot="8002850777"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<h2>Sport</h2>
-<ul>
-  {% for entry in sport %}
-    <li class="faq-item">
-      <strong>Question</strong>: {{ entry.question }}  <br>
-      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
-    </li>
-  {% endfor %}
-</ul>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7475843431276819"
-     crossorigin="anonymous"></script>
-<!-- Normal Quiz Ad Unit -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7475843431276819"
-     data-ad-slot="8002850777"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<h2>Miscellaneous</h2>
-<ul>
-  {% for entry in miscellaneous %}
-    <li class="faq-item">
-      <strong>Question</strong>: {{ entry.question }}  <br>
-      <strong>Answer</strong>: <div class="answer" data-answer="{{ entry.answer }}"><i>Click to reveal</i></div>
-    </li>
-  {% endfor %}
-</ul>
-
+    {% endunless %}
+  {% endif %}
+{% endfor %}

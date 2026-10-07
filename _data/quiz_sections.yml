@@ -1,0 +1,10 @@
+# Display order and titles of the sections on each quiz page.
+# Every question in _data/questions*.json has a `category` matching one of these ids.
+- id: general
+  title: General Knowledge
+- id: screen
+  title: Books, Screen & Games
+- id: sport
+  title: Sport
+- id: misc
+  title: Miscellaneous
