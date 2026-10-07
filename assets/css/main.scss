@@ -271,6 +271,15 @@ a {
   }
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2 $space-4;
+  margin-bottom: $space-3;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .page__footer-copyright {
   font-size: 0.75rem;
 }
