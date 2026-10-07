@@ -380,6 +380,223 @@ a {
   }
 }
 
+/* Quiz pages
+   ========================================================================== */
+
+.quiz-summary {
+  margin-top: -0.5em;
+  color: $muted;
+  font-weight: 600;
+}
+
+.quiz-intro {
+  font-size: 0.9rem !important;
+}
+
+.quiz-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: $space-3 0;
+
+  .btn[hidden] {
+    display: none;
+  }
+}
+
+.quiz-section {
+  margin-top: $space-5;
+}
+
+.quiz-questions {
+  margin: 0;
+  padding-inline-start: 1.75em;
+
+  > li {
+    margin: 0;
+    padding: $space-3 0;
+    border-bottom: 1px solid rgba($wheat, 0.6);
+
+    &::marker {
+      color: $muted;
+      font-weight: 700;
+    }
+  }
+}
+
+.quiz-questions .quiz-question__text {
+  margin: 0 0 $space-2 !important; // beat .page__content p
+}
+
+.quiz-answer {
+  summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    min-height: 44px;
+    padding: 0 1em;
+    color: $ink;
+    font-size: 0.8rem;
+    font-weight: 700;
+    list-style: none;
+    border: 1px solid $wheat;
+    border-radius: 999px;
+    background: $surface;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      width: 0.45em;
+      height: 0.45em;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(-45deg);
+      transition: transform 0.15s ease-out;
+    }
+
+    &:hover {
+      border-color: $amber;
+      background: mix($surface, $amber, 85%);
+    }
+  }
+
+  &[open] summary::before {
+    transform: rotate(45deg);
+  }
+
+  &[open] .quiz-answer__show,
+  &:not([open]) .quiz-answer__hide {
+    display: none;
+  }
+}
+
+.quiz-questions .quiz-answer__text {
+  margin: $space-2 0 0 !important; // beat .page__content p
+  padding: $space-2 $space-3;
+  font-weight: 600;
+  background: mix($surface, $amber, 88%);
+  border-left: 4px solid $amber;
+  border-radius: 0 $radius $radius 0;
+}
+
+.quiz-pager {
+  float: inline-start; // siblings in .page__inner-wrap are floated
+  clear: both;
+  width: 100%;
+  display: grid;
+  gap: $space-3;
+  grid-template-columns: repeat(auto-fit, minmax(#{unquote("min(100%, 14rem)")}, 1fr));
+  margin: $space-5 0 $space-4;
+}
+
+.quiz-pager__link {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  padding: $space-3;
+  color: $ink;
+  text-decoration: none;
+  background: $surface;
+  border: 1px solid $wheat;
+  border-radius: $radius;
+
+  &:visited {
+    color: $ink;
+  }
+
+  &:hover {
+    color: $ink;
+    border-color: $amber;
+  }
+
+  &--next {
+    text-align: end;
+    grid-column: -2;
+  }
+}
+
+.quiz-pager__label {
+  color: $muted;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.quiz-pager__title {
+  @include display-type;
+}
+
+/* The post footer repeats the date and the single category; drop it on quiz pages */
+.layout--normal-quiz footer.page__meta {
+  display: none;
+}
+
+/* Share buttons follow the brand instead of each network's colour */
+.page__share {
+  .btn--twitter,
+  .btn--facebook,
+  .btn--linkedin {
+    @include button-secondary;
+    min-height: 40px;
+    font-size: 0.8rem;
+    margin-bottom: $space-2;
+  }
+}
+
+.newsletter {
+  margin: $space-5 0;
+}
+
+/* Print: a quiz page becomes a clean question-and-answer sheet */
+@media print {
+  .masthead,
+  .sidebar,
+  .page__footer,
+  .page__share,
+  .page__related,
+  .page__meta,
+  .quiz-pager,
+  .quiz-toolbar,
+  .newsletter,
+  .ml-embedded,
+  .adsbygoogle,
+  .skip-links,
+  .events,
+  .quiz-answer summary {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .quiz-questions > li {
+    break-inside: avoid;
+    padding: 0.4em 0;
+  }
+
+  .quiz-answer__text {
+    margin-top: 0.2em;
+    padding: 0;
+    background: none;
+    border: 0;
+
+    &::before {
+      content: "Answer: ";
+    }
+  }
+}
+
+@media print {
+  .quiz-answer::details-content {
+    content-visibility: visible;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
