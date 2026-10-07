@@ -1,6 +1,6 @@
 ---
 layout: normal-quiz
-title:  "Quizmaster Dommsday"
+title:  "Quizmaster Doomsday (March)"
 location: "Le Croque Bedaine"
 date: "2025-03-07"
 categories:
