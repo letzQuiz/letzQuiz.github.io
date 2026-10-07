@@ -1,28 +1,27 @@
 ---
-layout: archive
+layout: splash
 ---
+{% comment %}
+  Homepage: hero (index.html front matter), next quizzes, newsletter
+  sign-up, then the latest quizzes with a link to the full archive.
+{% endcomment %}
+{% include upcoming-events.html %}
+
+{% include newsletter.html heading="Want a reminder before each quiz?" text="Subscribe below." %}
+
+<section class="home-archive" aria-labelledby="home-archive-title">
+  <h2 id="home-archive-title">Past quizzes</h2>
+  <p>Missed one? Every past quiz, questions and answers included, is in the question archive.</p>
+  <div class="entries-grid">
+    {% for post in site.posts limit: 3 %}
+      {% include archive-single.html type="grid" %}
+    {% endfor %}
+  </div>
+  <p class="home-archive__more"><a class="btn btn--inverse" href="{{ '/archive/' | relative_url }}">Browse the question archive</a></p>
+</section>
 
 {{ content }}
-
-<div class="ml-embedded" data-form="5JTcdl"></div>
-
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
-
-{% if paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts %}
-{% endif %}
-
-{% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
-  {% for post in posts %}
-    {% include archive-single.html type=entries_layout %}
-  {% endfor %}
-</div>
 
 {% if page.use_math %}
   {% include mathjax-custom.html %}
 {% endif %}
-
-{% include paginator.html %}

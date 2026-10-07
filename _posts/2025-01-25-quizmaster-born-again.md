@@ -4,6 +4,8 @@ title:  "Quizmaster Born Again"
 location: "Le Croque Bedaine"
 date: "2025-01-25"
 excerpt: "36 questions from the 25 January 2025 pub quiz at Le Croque Bedaine."
+header:
+  teaser: /assets/images/posters/2025-01-25.webp
 categories:
   - Questions
 ---

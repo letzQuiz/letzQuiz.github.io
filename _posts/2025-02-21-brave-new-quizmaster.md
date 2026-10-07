@@ -4,6 +4,8 @@ title:  "Brave New Quizmaster"
 location: "Le Croque Bedaine"
 date: "2025-02-21"
 excerpt: "30 questions from the 21 February 2025 pub quiz at Le Croque Bedaine."
+header:
+  teaser: /assets/images/posters/2025-02-21.webp
 categories:
   - Questions
 ---
