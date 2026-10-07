@@ -1,6 +1,7 @@
 ---
 title:  "Fun With Flags"
 date: 2024-07-01
+excerpt: "10 flag questions from the Fun with Flags special round of the 9 September 2022 pub quiz."
 categories:
   - Questions
 tags:
