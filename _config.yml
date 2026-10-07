@@ -114,10 +114,6 @@ analytics:
     anonymize_ip         : # true, false (default)
 
 
-# Google AdSense publisher ID (also in /ads.txt). Ad units: _includes/ad-slot.html
-adsense_client           : "ca-pub-7475843431276819"
-
-
 # Site Author
 author:
   name             : "Erik Pillon"

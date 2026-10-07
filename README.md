@@ -35,4 +35,3 @@ runs the same data check as CI.
 | Quiz page sections | `_data/quiz_sections.yml` |
 | Brand colours, fonts, all custom CSS | `assets/css/main.scss` |
 | Menu | `_data/navigation.yml` |
-| Ad unit | `_includes/ad-slot.html` |

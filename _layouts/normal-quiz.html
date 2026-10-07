@@ -30,7 +30,6 @@ layout: single
 
 {% include quiz-toolbar.html %}
 
-{%- assign ad_shown = false -%}
 {% for section in site.data.quiz_sections %}
   {%- assign section_entries = quiz_entries | where: "category", section.id -%}
   {%- if section_entries.size > 0 %}
@@ -42,11 +41,6 @@ layout: single
     {%- endfor %}
   </ol>
 </section>
-
-    {%- unless ad_shown %}
-{% include ad-slot.html slot="8002850777" %}
-      {%- assign ad_shown = true -%}
-    {% endunless -%}
   {%- endif -%}
 {% endfor %}
 

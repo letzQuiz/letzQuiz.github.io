@@ -769,10 +769,6 @@ $hero-photo-set: image-set(url("../images/PubQuiz_background.webp") type("image/
   color: $ink;
 }
 
-.ad-slot {
-  margin: $space-5 0;
-}
-
 /* Print: a quiz page becomes a clean question-and-answer sheet */
 @media print {
   .masthead,
@@ -785,7 +781,6 @@ $hero-photo-set: image-set(url("../images/PubQuiz_background.webp") type("image/
   .quiz-toolbar,
   .newsletter,
   .ml-embedded,
-  .adsbygoogle,
   .skip-links,
   .events,
   .quiz-answer summary {

@@ -13,7 +13,7 @@ This site is run by Erik Pillon, the quizmaster. Questions about your data: [qui
 
 **Visit statistics.** Google Analytics records which pages are visited and roughly where visitors come from, using cookies. The data is processed by Google; see [Google's privacy policy](https://policies.google.com/privacy).
 
-**Ads.** Quiz pages show one Google AdSense ad. Google and its partners use cookies to show and measure ads, which may be personalised based on your visits to this and other websites. See [how Google uses information from sites that use its services](https://policies.google.com/technologies/partner-sites) and manage ad personalisation in [My Ad Center](https://myadcenter.google.com/).
+**No ads.** This site shows no advertising.
 
 **Newsletter.** The sign-up form is provided by MailerLite and loads from their servers on every page. If you subscribe, MailerLite stores your email address so you get quiz announcements. Every email has an unsubscribe link, or you can email me to be removed.
 
