@@ -1,10 +1,10 @@
 # main links
 main:
-  # - title: "Quick-Start Guide"
-  #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  - title: "About"
+  - title: "Next quiz"
+    url: /#next-quiz
+  - title: "Question archive"
+    url: /archive/
+  - title: "About & rules"
     url: /about/
-  - title: "Year Archive"
-    url: /year-archive/
-  - title: "Get in Touch"
+  - title: "Contact"
     url: /get-in-touch/
