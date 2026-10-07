@@ -7,3 +7,61 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+/* ==========================================================================
+   Let'z Quiz! custom styles (keep theme files untouched)
+   ========================================================================== */
+
+/* Upcoming events (homepage) */
+.events {
+  margin: 2em 0;
+}
+
+.events__list {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1.25em;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background: #fff;
+
+  &[hidden] {
+    display: none;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.event-card__date {
+  font-weight: bold;
+  font-size: $type-size-4;
+}
+
+.event-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: auto;
+  padding-top: 0.5em;
+}
+
+.badge {
+  align-self: flex-start;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  font-size: $type-size-6;
+  font-weight: bold;
+}
+
+.events__empty[hidden] {
+  display: none;
+}

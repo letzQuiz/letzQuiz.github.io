@@ -1,0 +1,14 @@
+# One entry per quiz. Dates in ISO format, times in 24h Luxembourg local time.
+# Past dates disappear from the homepage automatically; no need to delete them.
+- date: 2026-11-07
+  start: "19:30"
+  venue: "Le Croque Bedaine"
+  area: "Limpertsberg"
+  status: open                 # open | full | cancelled
+  note: ""
+- date: 2026-12-05
+  start: "19:30"
+  venue: "Le Croque Bedaine"
+  area: "Limpertsberg"
+  status: open
+  note: ""
