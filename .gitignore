@@ -31,3 +31,5 @@ codekit-config.json
 _asset_bundler_cache
 _site
 _site/*
+# Quiz drafts with answers: never commit them, the repo is public
+quiz-prep/

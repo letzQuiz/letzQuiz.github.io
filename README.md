@@ -36,3 +36,5 @@ runs the same data check as CI.
 | Brand colours, fonts, all custom CSS | `assets/css/main.scss` |
 | Menu | `_data/navigation.yml` |
 | Ad unit | `_includes/ad-slot.html` |
+| Printable picture rounds and answer sheets | `scripts/picture_rounds.py` (`pip install pillow`, then `--help`) |
+| Drafts with answers (git-ignored, never pushed) | `quiz-prep/` |
